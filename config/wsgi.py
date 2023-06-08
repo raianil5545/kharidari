@@ -1,5 +1,5 @@
 """
-WSGI config for rastrabadi project.
+WSGI config for kharidari project.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
@@ -20,7 +20,7 @@ from pathlib import Path
 from django.core.wsgi import get_wsgi_application
 
 # This allows easy placement of apps within the interior
-# rastrabadi directory.
+# kharidari directory.
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent
 sys.path.append(str(ROOT_DIR / "kharidari_api"))
 # We defer to a DJANGO_SETTINGS_MODULE already in the environment. This breaks

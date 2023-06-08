@@ -44,6 +44,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     # cleaning up ununsed files
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
+    
+RUN apt-cache search wkhtmltopdf
 
 # wkhtmltopdf
 RUN apt-get update && apt-get install -y \

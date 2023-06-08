@@ -73,10 +73,11 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
+    "corsheaders"
 ]
 
 LOCAL_APPS = [
-    "rastrabadi.applications.baseuser",
+    "kharidari_api.applications.account",
     # Your stuff: custom apps go here
 ]
 
@@ -86,7 +87,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
-MIGRATION_MODULES = {"sites": "rastrabadi.contrib.sites.migrations"}
+MIGRATION_MODULES = {"sites": "kharidari_api.contrib.sites.migrations"}
 # AUTHENTICATION
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#authentication-backends
@@ -176,7 +177,6 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                # "rastrabadi.users.context_processors.allauth_settings",
             ],
         },
     }
@@ -254,7 +254,7 @@ REST_USE_JWT = True
 JWT_AUTH_HTTPONLY = True
 JWT_AUTH_COOKIE = 'jwt-auth'
 JWT_AUTH_REFRESH_COOKIE = 'jwt-refresh-token'
-AUTH_USER_MODEL = 'baseuser.BaseUser'
+AUTH_USER_MODEL = 'account.User'
 
 SIMPLE_JWT = {
     'USER_ID_FIELD':"uuid"
@@ -268,8 +268,3 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'pradip.meerako@gmail.com'
 EMAIL_HOST_PASSWORD = 'iwklqduqqaznolqj'
-
-
-
-
-

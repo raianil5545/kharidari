@@ -9,7 +9,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
 
     path(settings.ADMIN_URL, admin.site.urls),
-
+    path("account/", include("kharidari_api.applications.account.api.urls"))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
