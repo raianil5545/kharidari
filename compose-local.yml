@@ -22,6 +22,24 @@ services:
     ports:
       - "8000:8000"
     command: /start
+  
+  client:
+    build:
+      context: .
+      dockerfile: ./docker/local/client/Dockerfile
+    image: kharidari_local_client
+    container_name: kharidari_local_client
+    depends_on:
+      - django
+    volumes:
+      - ./client:/client:z
+      - ./client/node_modules:/client/node_modules
+      - ./client/.pnpm-store:/client/.pnpm-store
+    env_file:
+      - ./.envs/local/.env
+    ports:
+      - "3000:3000"
+
 
   postgres:
     build:
@@ -44,4 +62,3 @@ services:
   redis:
     image: redis:6
     container_name: kharidari_local_redis
-

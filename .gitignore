@@ -1,2 +1,5 @@
 .DS_Store
 .vscode
+client/.next
+client/.pnpm-store
+client/node_modules
