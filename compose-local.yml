@@ -1,0 +1,47 @@
+version: '3'
+
+volumes:
+  kharidari_local_postgres_data: {}
+  kharidari_local_postgres_data_backups: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./docker/local/server/Dockerfile
+    image: kharidari_local_server
+    container_name: kharidari_local_server
+    depends_on:
+      - postgres
+      - redis
+      - mailhog
+    volumes:
+      - .:/app:z
+    env_file:
+      - ./.envs/local/.env
+    ports:
+      - "8000:8000"
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./docker/postgres/Dockerfile
+    image: kharidari_production_postgres
+    container_name: kharidari_local_postgres
+    volumes:
+      - kharidari_local_postgres_data:/var/lib/postgresql/data:Z
+      - kharidari_local_postgres_data_backups:/backups:z
+    env_file:
+      - ./.envs/local/.env
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    container_name: kharidari_local_mailhog
+    ports:
+      - "8025:8025"
+
+  redis:
+    image: redis:6
+    container_name: kharidari_local_redis
+
