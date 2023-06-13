@@ -9,7 +9,7 @@ env = environ.Env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.envs/local/..env'))
+environ.Env.read_env(os.path.join(BASE_DIR, '.envs/local/.env'))
 
 SECRET_KEY = 'django-insecure-$iz@i^i+a1i!g-4vhi^p#%4yc2vbx=^jy9i%@-i)93((+j6ref'
 
